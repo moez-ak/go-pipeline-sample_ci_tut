@@ -1,0 +1,33 @@
+pipeline:
+  name: Build go-pipeline-sample_ci_tut
+  identifier: Build_moez_ak_go_pipeline_sample_ci_tut_1729776551307
+  projectIdentifier: moez_lavji
+  orgIdentifier: gft_sandbox_organization
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Echo Welcome Message
+                  identifier: Echo_Welcome_Message
+                  spec:
+                    shell: Sh
+                    command: echo "Welcome to Harness CI"
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github
+        repoName: moez-ak/go-pipeline-sample_ci_tut
+        build: <+input>
